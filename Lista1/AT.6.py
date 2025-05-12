@@ -1,4 +1,4 @@
-# 6. A fábrica de refrigerantes Meia-Cola vende seu produto em três formatos: lata de 350 ml, 
+0# 6. A fábrica de refrigerantes Meia-Cola vende seu produto em três formatos: lata de 350 ml, 
 # garrafa de 600 ml e garrafa de 2 litros. Se um comerciante compra uma determinada quantidade de cada formato, 
 # faça um algoritmo para calcular quantos litros de refrigerante ele comprou.
 
@@ -15,5 +15,5 @@ litro_garrafa = ml_garrafa / 1000
 print(60 * "-")
 total_litros = litro_lata + litro_garrafa + qnt_garrafa_litro # Calcula o tanto de litros comprados
 
-print(f"A quantidade total foi de {total_litros} Litros.") # Exibe o resultado final
+print(f"A quantidade total foi de {total_litros:.0f} Litros.") # Exibe o resultado final
 
