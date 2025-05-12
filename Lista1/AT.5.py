@@ -3,7 +3,6 @@
 
 qnt_blusa = int(input("Insira a quantidade de blusas a fazer: ")) # Insere o valor na variável
 
-fio_blusa = qnt_blusa*120 # Faz o calculo da quantidade de fios necessários para a produção da blusa.
-novelo = fio_blusa/125 # Faz o calculo da quantidade de novelos necessários para a produção da blusa.
+novelo  = (qnt_blusa*120) /125 # Faz o calculo da quantidade de fios necessários para a produção da blusa.
 
 print(f"A quantidade necessárias de novelos é: {novelo}") # Exibe a resposta ao usuário.
