@@ -6,6 +6,6 @@
 
 qnt_frango = int(input("Insira a quantidade de frangos: ")) # Insere o valor na variável
 
-valor_aneis = (qnt_frango*4.00) + (qnt_frango*3.50) # Calcula o valor dos aneis
+valor_aneis = (qnt_frango*4.00) + (qnt_frango*(3.50*2)) # Calcula o valor dos aneis
 
 print(f"O valor para marcar todos os frangos vai ser: {valor_aneis}") # Exibe o resultado
