@@ -5,9 +5,9 @@
 
 sanduiche = int(input("Insira a quantidade de sanduíches a fazer: ")) # Insere o valor na variável
 
-queijo = 100
-presunto = 50 # Insere o valor as variáveis
-hamburger = 100
+queijo = 0.1
+presunto = 0.05 # Insere o valor as variáveis
+hamburger = 0.1
 
 queijo_kg = queijo*sanduiche
 presunto_kg = presunto*sanduiche # Calcula a qauntidade de produtos de acordo com o número inserido pelo usuario
