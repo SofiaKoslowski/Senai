@@ -8,9 +8,7 @@ qnt_garrafa_litro = int(input("Inira a quantidade de garrafas de 2L compradas: "
 
 ml_lata = qnt_lata*350 # Faz o calculo de quantos litros por lata e por garrafa.
 ml_garrafa = qnt_garrafa_ml*600
-
-litro_lata = ml_lata / 1000 # Converte o "Ml" pra "L".
-litro_garrafa = ml_garrafa / 1000
+litro_garrafa = qnt_garrafa_litro*2000
 
 print(60 * "-")
 total_litros = litro_lata + litro_garrafa + qnt_garrafa_litro # Calcula o tanto de litros comprados
