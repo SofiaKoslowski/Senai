@@ -1,8 +1,9 @@
-# 14. Faça um algoritmo que receba o preço de um produto, calcule e mostre o novo preço, 
-# sabendo-se que este sofreu um desconto de 10%.
+# Recebendo as notas do usuário
+nota1 = float(input("Digite a primeira nota (peso 2): "))
+nota2 = float(input("Digite a segunda nota (peso 3): "))
 
-preco = float(input("Qual preço do produto? ")) # Insere o valor nas variáveis
+# Calculando a média ponderada
+media_ponderada = (2 * nota1 + 3 * nota2) / (2 + 3)
 
-desconto = preco * 0.10 # Faz o calculo
-
-print(f"O preço final é: {desconto}") # Mostra o resultado
+# Mostrando o resultado
+print("A média ponderada das notas é: ", media_ponderada)
