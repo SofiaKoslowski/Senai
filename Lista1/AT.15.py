@@ -11,4 +11,3 @@ salario_final = salario_fixo + comissao
 # Mostrando o resultado
 print("A comissão do funcionário é de: R$", comissao)
 print("O salário final do funcionário é de: R$", salario_final)
-
