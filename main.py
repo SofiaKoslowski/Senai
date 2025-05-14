@@ -8,7 +8,7 @@ app = Flask(__name__, template_folder=template_dir)
 # Direcionamento para base do index HTML
 @app.route("/")
 def home ():
-    return render_template("Index.html")
+    return render_template("Index2.html")
 
 if __name__ == "__main__":
     app.run(host= "0.0.0.0", port=3000)
