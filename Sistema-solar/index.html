@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sistema Solar 2D com JS</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; overflow: hidden; height: 100vh; width: 100vw;
+      background: url('assents/imagem/Espaco.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .sol {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      pointer-events: none;
+    }
+    .sol img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 30px yellow);
+    }
+    .orbita {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .planeta {
+      position: fixed;
+      transform: translate(-50%, -50%);
+      height: auto;
+      cursor: pointer; /* Permitir interação */
+      pointer-events: auto; /* Habilitar cliques */
+    }
+    /* Tamanhos proporcionais dos planetas */
+    #mercurio { width: 25px; filter: drop-shadow(0 0 8px gray); }
+    #venus { width: 35px; filter: drop-shadow(0 0 10px orange); }
+    #terra { width: 38px; filter: drop-shadow(0 0 10px #00bfff); }
+    #marte { width: 30px; filter: drop-shadow(0 0 10px red); }
+    #jupiter { width: 100px; filter: drop-shadow(0 0 12px orange); }
+    #saturno { width: 150px; filter: drop-shadow(0 0 12px gold); }
+    #urano { width: 60px; filter: drop-shadow(0 0 10px cyan); }
+    #netuno { width: 58px; filter: drop-shadow(0 0 10px blue); }
+  </style>
+
+  <!-- Pré-carregamento das páginas dos planetas -->
+  <link rel="prefetch" href="planetas/Mercurio.html">
+  <link rel="prefetch" href="planetas/Venus.html">
+  <link rel="prefetch" href="planetas/Terra.html">
+  <link rel="prefetch" href="planetas/Marte.html">
+  <link rel="prefetch" href="planetas/Jupiter.html">
+  <link rel="prefetch" href="planetas/Saturno.html">
+  <link rel="prefetch" href="planetas/Urano.html">
+  <link rel="prefetch" href="planetas/Netuno.html">
+</head>
+<body>
+  <div class="space">
+    <div class="sol">
+      <img src="assents/imagem/Sol.png" alt="Sol" />
+    </div>
+
+    <!-- Órbitas -->
+    <div class="orbita" id="orbita-mercurio"></div>
+    <div class="orbita" id="orbita-venus"></div>
+    <div class="orbita" id="orbita-terra"></div>
+    <div class="orbita" id="orbita-marte"></div>
+    <div class="orbita" id="orbita-jupiter"></div>
+    <div class="orbita" id="orbita-saturno"></div>
+    <div class="orbita" id="orbita-urano"></div>
+    <div class="orbita" id="orbita-netuno"></div>
+
+    <!-- Planetas -->
+    <img src="assents/imagem/Mercurio.png" class="planeta" id="mercurio" alt="Mercúrio" />
+    <img src="assents/imagem/Venus.png" class="planeta" id="venus" alt="Vênus" />
+    <img src="assents/imagem/Terra.png" class="planeta" id="terra" alt="Terra" />
+    <img src="assents/imagem/Marte.png" class="planeta" id="marte" alt="Marte" />
+    <img src="assents/imagem/Jupiter.png" class="planeta" id="jupiter" alt="Júpiter" />
+    <img src="assents/imagem/Saturno.png" class="planeta" id="saturno" alt="Saturno" />
+    <img src="assents/imagem/Urano.png" class="planeta" id="urano" alt="Urano" />
+    <img src="assents/imagem/Netuno.png" class="planeta" id="netuno" alt="Netuno" />
+  </div>
+
+  <script>
+    let sunX = window.innerWidth / 2;
+    let sunY = window.innerHeight / 2;
+
+    const planets = [
+      { id: 'mercurio', orbitId: 'orbita-mercurio', radius: 120, speed: 0.01, angle: 0 },
+      { id: 'venus', orbitId: 'orbita-venus', radius: 160, speed: 0.008, angle: 0 },
+      { id: 'terra', orbitId: 'orbita-terra', radius: 200, speed: 0.007, angle: 0 },
+      { id: 'marte', orbitId: 'orbita-marte', radius: 240, speed: 0.006, angle: 0 },
+      { id: 'jupiter', orbitId: 'orbita-jupiter', radius: 300, speed: 0.004, angle: 0 },
+      { id: 'saturno', orbitId: 'orbita-saturno', radius: 360, speed: 0.003, angle: 0 },
+      { id: 'urano', orbitId: 'orbita-urano', radius: 420, speed: 0.0025, angle: 0 },
+      { id: 'netuno', orbitId: 'orbita-netuno', radius: 470, speed: 0.002, angle: 0 },
+    ];
+
+    const planetLinks = {
+      mercurio: 'planetas/Mercurio.html',
+      venus: 'planetas/Venus.html',
+      terra: 'planetas/Terra.html',
+      marte: 'planetas/Marte.html',
+      jupiter: 'planetas/Jupiter.html',
+      saturno: 'planetas/Saturno.html',
+      urano: 'planetas/Urano.html',
+      netuno: 'planetas/Netuno.html'
+    };
+
+    planets.forEach(planet => {
+      const planetEl = document.getElementById(planet.id);
+      planetEl.addEventListener('click', () => {
+        window.open(planetLinks[planet.id], '_self');
+      });
+    });
+
+    function updatePositions() {
+      planets.forEach(planet => {
+        planet.angle += planet.speed;
+        const planetEl = document.getElementById(planet.id);
+        const orbitEl = document.getElementById(planet.orbitId);
+        planetEl.style.left = sunX + planet.radius * Math.cos(planet.angle) + 'px';
+        planetEl.style.top = sunY + planet.radius * Math.sin(planet.angle) + 'px';
+        orbitEl.style.width = planet.radius * 2 + 'px';
+        orbitEl.style.height = planet.radius * 2 + 'px';
+      });
+      requestAnimationFrame(updatePositions);
+    }
+
+    window.onload = updatePositions;
+  </script>
+</body>
+</html>

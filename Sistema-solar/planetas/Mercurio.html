@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mercúrio - Dados do Planeta</title>
+  <style>
+    body {
+      background: url("../assents/imagem/Espaco.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #9fb1cf;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      padding: 40px;
+      margin: 0;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px #9fb1cf, 0 0 30px #9fb1cf;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #9fb1cf; }
+      100% { text-shadow: 0 0 30px #9fb1cf; }
+    }
+    .planet-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      box-shadow: 0 0 40px #9fb1cf;
+      object-fit: cover;
+      display: block;
+      margin: 30px auto;
+    }
+    .info-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 12px;
+      display: inline-block;
+      transition: transform 0.3s ease-in-out;
+    }
+    .info-container:hover {
+      transform: scale(1.05);
+    }
+    .mass, .distance, .description, .origin, .name-origin {
+      font-size: 1.3em;
+      margin: 0.5em 0;
+      line-height: 1.4;
+    }
+    /* Estilo do botão foguete */
+    .back-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 80px;
+      height: 80px;
+      background: url("../assents/imagem/Foguete.png") no-repeat center center;
+      background-size: cover;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+    .back-button:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>Mercúrio</h1>
+  <img class="planet-image" src="../assents/imagem/Mercurio.png" alt="Mercúrio">
+  
+  <div class="info-container">
+    <p class="mass"><strong>Massa:</strong> 3.3 x 10<sup>23</sup> kg</p>
+    <p class="distance"><strong>Distância do Sol:</strong> 58 milhões de km</p>
+    <p class="description">Um dia em Mercúrio dura 59 dias terrestres!</p>
+    <p class="origin"><strong>Formação:</strong> Surgiu há cerca de 4,6 bilhões de anos como um dos planetas internos do sistema solar.</p>
+    <p class="name-origin"><strong>Nome:</strong> Nomeado em homenagem ao deus romano Mercúrio, mensageiro dos deuses.</p>
+  </div>
+
+  <!-- Botão de voltar -->
+  <a href="../index.html" class="back-button"></a>
+</body>
+</html>
+
+
